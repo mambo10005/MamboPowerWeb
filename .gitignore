@@ -1,0 +1,16 @@
+.virtualenvs
+__pycache__/
+db.sqlite3
+.bash_history
+.cache
+.gitconfig
+.bashrc
+.env
+.local
+.my.cnf
+.mysql_history
+.profile
+.python_history
+.pythonstartup.py
+.viminfo
+.vimrc
