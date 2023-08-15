@@ -5,3 +5,9 @@ class HomePageView(TemplateView):
 
 class AboutPageView(TemplateView):
     template_name = "about.html"
+
+class LinePageView(TemplateView):
+    template_name = "line.html"
+
+class TransformerPageView(TemplateView):
+    template_name = "transformer.html"

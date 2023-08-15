@@ -1,0 +1,144 @@
+{% extends "_base.html" %}
+{% load static %}
+
+{% block title %}Transformer{% endblock title %}
+
+{% block content %}
+    <h1>Transformer</h1>
+        <h2>Basic single-phase two-winding transformer</h2>
+        <img class="bodyImage" src="{% static 'images/singlePhaseTwoWindingTransformer.jpg' %}">
+        <ul>
+            <li><i>E<sub>1</sub></i>, <i>E<sub>2</sub></i>: Phasor volatages</li>
+            <li><i>I<sub>1</sub></i>, <i>I<sub>2</sub></i>: Phasor currents</li>
+            <li>&Phi;<sub>c</sub>: Phasor flux set up in the core</li>
+            <li><i>H<sub>c</sub></i>: Magnetic field intensity phasor</li>
+        </ul>
+            <h3>Ideal transformer</h3>
+                <h4>Assumptions</h4>
+                <ul>
+                    <li>The windings have zero resistance; therefore, the <i>I<sup>2</sup>R</i> losses in the windings are zero.</li>
+                    <li>The core permeability <i>&mu;<sub>c</sub></i> is infinite, which corresponds to zero core reluctance.</li>
+                    <li>There is no leakage flux; that is, the entire flux Fc is confined to the core and links both windings.</li>
+                    <li>There are no core losses.</li>
+                </ul>
+
+                <h4>Ohm's law for the magnetic circuit</h4>
+                <p>
+                    <i>N<sub>1</sub>I<sub>1</sub>-N<sub>2</sub>I<sub>2</sub></i> = R<sub>c</sub>&Phi;<sub>c</sub>
+                </p>
+                <p>
+                    The net magnetomotive force (mmf) <i>N<sub>1</sub>I<sub>1</sub>-N<sub>2</sub>I<sub>2</sub></i> equals
+                    the product of the core reluctance R<sub>c</sub> and the core flux &Phi;<sub>c</sub>.
+                    Reluctance R<sub>c</sub>, which impedes the establishment of flux in a magnetic circuit, is analogous to resistance
+                    in an electric circuit. For an ideal transformer, <i>&mu;<sub>c</sub></sup></i> is assumed infinite, and
+                    R<sub>c</sub> is 0.
+                </p>
+                <p>
+                    <i>N<sub>1</sub>I<sub>1</sub> = N<sub>2</sub>I<sub>2</sub></i>
+                </p>
+
+                <h4>Faraday’s law</h4>
+                <p>
+                    For an ideal transformer, the entire flux is assumed to be confined to the core, linking both windings.
+                    From Faraday’s law, the induced voltages across the windings are
+                </p>
+                <p>
+                    <i>E<sub>1</sub></i> = <i>N<sub>1</sub></i>(j&omega;)&Phi;<sub>c</sub>,
+                    <i>E<sub>2</sub></i> = <i>N<sub>2</sub></i>(j&omega;)&Phi;<sub>c</sub>
+                </p>
+
+                <h4>Basic relations for an ideal single-phase two-winding transformer</h4>
+                <p>The turns ratio <i>a<sub>t</sub></i> is defined as follows:</p>
+                <i>a<sub>t</sub></i> = <div class="frac"> <span><i>N<sub>1</sub></i></span>
+                                                            <span class="symbol">/</span>
+                                                            <span class="bottom"><i>N<sub>2</sub></i></span>
+                                        </div>
+                <p>
+                    Using <i>a<sub>t</sub></i>, the basic relations for an ideal single-phase two-winding transformer are
+                </p>
+                <p>
+                    <i>E<sub>1</sub></i> = <i>a<sub>t</sub>E<sub>2</sub></i>
+                </p>
+                <p>
+                    <i>a<sub>t</sub>I<sub>1</sub></i> = <i>I<sub>2</sub></i>
+                </p>
+
+            <h3>Practical transformer</h3>
+            <ul>
+                <li>The windings have resistance.</li>
+                <li>The core permeability <i>&mu;<sub>c</sub></i> is finite.</li>
+                <li>The magnetic flux is not entirely confined to the core.</li>
+                <li>There are real and reactive power losses in the core.</li>
+            </ul>
+
+                <h4>Equivalent circuits</h4>
+                <img class="bodySmallImage" src="{% static 'images/sptwPracticalEquivalentCircuits.jpg' %}">
+                <ul>
+                    <li>The resistance R<sub>1</sub> is included in series with winding 1
+                        to account for I<sup>2</sup>R losses in this winding.</li>
+                    <li>A reactance X<sub>1</sub>, called the <em>leakage reactance</em> of winding 1,
+                        is included in series with winding 1 to account for the leakage flux of winding 1.</li>
+                    <li>Similarly, there is a resistance R<sub>2</sub> and a leakage reactance X<sub>2</sub> in series with winding 2.</li>
+                    <li><i>I<sub>m</sub></i>, <em>magnetizing current</em>, lags <i>E<sub>1</sub></i> by 90°,
+                        and can be represented by a shunt inductor with susceptance B<sub>m</sub>.</li>
+                    <li>There is an additional shunt branch, represented by a resistor with conductance G<sub>c</sub> mhos,
+                        which carries a current <i>I<sub>c</sub></i>, called the <em>core loss</em> current.</li>
+                    <li>The phasor sum (<i>I<sub>c</sub></i> + <i>I<sub>m</sub></i>) is called the <em>exciting</em> current <i>I<sub>e</sub></i>.</li>
+                </ul>
+
+                    <h5>R<sub>2</sub> aneglectingnd X<sub>2</sub> are N to winding 1</h5>
+                    <img class="bodySmallImage" src="{% static 'images/sptwPracticalEquivalentW1.jpg' %}">
+
+                    <h5>Neglecting the exciting current</h5>
+                    <img class="bodySmallImage" src="{% static 'images/sptwPracticalEquivalentNeglectingExcitingCurrent.jpg' %}">
+                    <ul>
+                        <li>Since the exciting current is usually less than 5% of rated current,
+                            neglecting it in power system studies is often valid
+                            unless transformer efficiency or exciting current phenomena are of particular concern.</li>
+                    </ul>
+
+                    <h5>Neglecting the exciting current and I<sup>2</sup>R winding loss</h5>
+                    <img class="bodySmallImage" src="{% static 'images/sptwPracticalEquivalentNeglectingExcitingCurrentLoss.jpg' %}">
+                    <ul>
+                        <li>For large power transformers rated more than 500 kVA,
+                            the winding resistances, which are small compared to the leakage reactances, often can be neglected</li>
+                    </ul>
+
+            <h3>Per-Unit system</h3>
+            per-unit quantity = <div class="frac"> <span>actual quantity</span>
+                                                            <span class="symbol">/</span>
+                                                            <span class="bottom">base value of quantity</span>
+                                        </div>
+            <p>
+                <ul>
+                    <li>One advantage of the per-unit system is that by properly specifying base quantities,
+                        the transformer equivalent circuit can be simplified. The ideal transformer
+                        winding can be eliminated, such that voltages, currents, and external impedances
+                        and admittances expressed in per-unit do not change when they are referred from
+                        one side of a transformer to the other. This can be a significant advantage even in
+                        a power system of moderate size, where hundreds of transformers may be encountered.
+                        Using the per-unit system avoids the possibility of making serious calculation
+                        errors when referring quantities from one side of a transformer to the other.</li>
+                    <li>Another advantage of the per-unit system is that the per-unit impedances of electrical equipment
+                        of similar type usually lie within a narrow numerical range when the equipment
+                        ratings are used as base values. Because of this, per-unit impedance data can
+                        be checked rapidly for gross errors by someone familiar with per-unit quantities. In
+                        addition, manufacturers usually specify the impedances of machines and transformers
+                        in per-unit or percent of nameplate rating.</li>
+                    <li>Two independent base values can be arbitrarily selected at one point in a power
+                        system. Usually the base voltage and base complex power are selected
+                        for either a single-phase circuit or for one phase of a three-phase circuit.
+                        Then, relations following electrical laws are used for other base values.</li>
+                    <li>With the following two rules, a per-unit impedance remains unchanged when referred from
+                        one side of a transformer to the other.</li>
+                        <ol>
+                            <li>The value of base complex power is the same for the entire power system of concern.</li>
+                            <li>The ratio of the voltage bases on either side of a transformer is selected
+                                to be the same as the ratio of the transformer voltage ratings.</li>
+                        </ol>
+                </ul>
+            </p>
+
+                <h4>Per-unit equivalent circuits</h4>
+                <img class="bodySmallImage" src="{% static 'images/sptwTransformerEquivalentCircuits.jpg' %}">
+{% endblock content %}

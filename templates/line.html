@@ -1,0 +1,139 @@
+{% extends "_base.html" %}
+{% load static %}
+
+{% block title %}Transmission Line{% endblock title %}
+
+{% block content %}
+    <h1>Transmission Line</h1>
+        <h2>Parameters</h2>
+            <h3>Series resistance</h3>
+            Series resistance accounts for ohmic (I<sup>2</sup>R) line losses. Conductor resistance depends on the following factors:
+            <ul>
+                <li>Spiraling</li>
+                For stranded conductors, alternate layers of strands are spiraled in opposite directions
+                to hold the strands together. Spiraling makes the strands 1 or 2% longer than
+                the actual conductor length.
+                <li>Temperature</li>
+                Resistivity of conductor metals varies linearly over normal operating temperatures.
+                <li>Frequency (“skin effect”)</li>
+                As frequency increases, the current in a solid cylindrical conductor tends to crowd
+                toward the conductor surface with smaller current density at the conductor center.
+                This phenomenon is called <em>skin effect</em>. A conductor with a large radius can even have
+                an oscillatory current density versus the radial distance from the conductor center.
+                With increasing frequency, conductor loss increases, which causes
+                the ac resistance to increase. At power frequencies (60 Hz), the ac resistance is at
+                most a few percent higher than the dc resistance. Conductor manufacturers normally
+                provide dc, 50-Hz, and 60-Hz conductor resistance based on test data.
+                <li>Current magnitude—magnetic conductors</li>
+                For magnetic conductors, such as steel conductors used for shield wires, resistance
+                depends on current magnitude. The internal flux linkages, and therefore the
+                iron or magnetic losses, depend on the current magnitude. For Aluminium conductor steel-reinforced cable (ACSR) conductors,
+                the steel core has a relatively high resistivity compared to the aluminum strands, and
+                therefore the effect of current magnitude on ACSR conductor resistance is small.
+            </ul>
+
+            <h3>Series inductance</h3>
+            <p>When current flow within a conductor, magnetic flux is set up.
+                With the variation of current in the conductor, the number of lines of flux also changes,
+                and an electromotive force (emf) is induced in it (Faraday’s Law).
+                This induced emf is represented by the parameter known as inductance.
+            </p>
+            <p>The flux linking with the conductor consist of two parts, namely, the internal flux and the external flux.
+                The internal flux is induced due to the current flow in the conductor.
+                The external flux produced around the conductor is due to its own current and the current of the other conductors place around it.
+                The total inductance of the conductor is determined by the calculation of the internal and external flux.</p>
+
+            <h3>Shunt capacitance</h3>
+            <p>Shunt capacitance gives rise to line-charging currents. Transmission line conductors constitute a capacitor between them.
+                The conductors of the transmission line act as a parallel plate of the capacitor
+                and the air is just like a dielectric medium between them.
+                The capacitance of a line gives rise to the leading current between the conductors, and
+                it is proportional to the length of the transmission line.</p>
+
+            <h3>Shunt conductance</h3>
+            <p>Conductance accounts for real power loss due to leakage currents between conductors or between
+                conductors and ground. For overhead lines, this power loss is due to leakage currents
+                at insulators and to corona.</p>
+                <ul>
+                    <li>Insulator leakage current</li>
+                    Insulator leakage current depends on the amount
+                    of dirt, salt, and other contaminants that have accumulated on insulators, as
+                    well as on meteorological factors, particularly the presence of moisture.
+                    <li>Corona</li>
+                    Corona occurs when a high value of electric field strength at a conductor surface causes the
+                    air to become electrically ionized and to conduct. The real power loss due to corona,
+                    called corona loss, depends on meteorological conditions, particularly rain, and on
+                    conductor surface irregularities.
+                </ul>
+            <p>Losses due to insulator leakage and corona are
+                usually small compared to conductor I<sup>2</sup>R loss. Conductance is usually neglected in
+                power system studies because it is a very small component of the shunt admittance.</p>
+
+        <h2>Three types of transmission lines</h2>
+        <ul>
+            <li>Short line: less than 25 km</li>
+            The mathematical modeling of short transmission lines is simplest.
+            The capacitance is too small to prevail and it is simply ignored.
+            Shunt admittance is also ignored due to the same current flowing through the line.
+            Only the series resistance and reactance are included. The shunt admittance is neglected.
+
+            <li>Medium line: 25 to 250 km</li>
+            As the length increases above 25 km, the capacitive effects become quite significant.
+            At this point ignoring capacitance and admittance introduces large errors ultimately leading to incorrect approximations.
+            It is common to lump the total shunt capacitance and locate half at each end of the line. Such a
+            circuit is called a nominal <em>&pie; circuit</em>.
+
+            <li>Long line: more than 250 km</li>
+            The lumped analysis of line yields useful results for lines up to 250 km.
+            However, the results are not veracious for longer spans.
+            For modeling longer spans, the parameters are considered to be uniformly distributed across the line.
+            The Rigorous methods is used for solving longer spans.
+        </ul>
+
+        <h2>Transmission line approximations</h2>
+            <p>It is convenient to represent a transmission line by the two-port network,
+                where <i>V<sub>S</sub></i> and <i>I<sub>S</sub></i> are the sending-end voltage and current,
+                and <i>V<sub>R</sub></i> and <i>I<sub>R</sub></i> are the receiving-end voltage and current.</p>
+
+            <img class="bodySmallImage" src="{% static 'images/twoPortNetwork.jpg' %}">
+
+            <p>
+                    Parameter notations:
+                <ul>
+                    <li>series impedance per unit length: <i>z</i> = R + <i>j&omega;</i>L &Omega;/m</li>
+                    <li>shunt admittance per unit length: <i>y</i> = G + <i>j&omega;</i>C S/m</li>
+                    <li>total series impedance: <i>Z</i> = <i>zl</i> &Omega;</li>
+                    <li>total shunt admittance: <i>Y</i> = <i>yl</i> S</li>
+                    <li>line length: <i>l</i> m</li>
+                </ul>
+            </p>
+
+            <h3>Short line approximation</h3>
+            <img class="bodySmallImage" src="{% static 'images/shortLineApproximation.jpg' %}">
+            <br>
+            <img src="{% static 'images/shortLineABCD.jpg' %}">
+
+            <h3>Medium line approximation</h3>
+            <img class="bodySmallImage" src="{% static 'images/mediumLineApproximation.jpg' %}">
+            <br>
+            <img src="{% static 'images/mediumLineABCD.jpg' %}">
+
+            <h3>Long line approximation</h3>
+            <p>
+                The line constants R, L, and C are per-length values having
+                units of &Omega;/m, H/m, and F/m. They are not lumped, but rather are uniformly
+                distributed along the length of the line.
+            </p>
+            <img class="bodySmallImage" src="{% static 'images/lineSection.JPG' %}">
+            <br>
+            <img src="{% static 'images/longLineABCD.jpg' %}">
+            <p><i>&gamma;</i>, whose units are m<sup>-1</sup>, is called the <em>propagation constant</em>, and <i>&gamma;</i><sup>2</sup> = <i>zy</i>.
+            </p>
+            <p>
+                Many computer programs used in power system analysis and design assume circuit
+                representations of components such as transmission lines and transformers. It is
+                therefore convenient to represent the terminal characteristics of a transmission line
+                by an equivalent circuit instead of its ABCD parameters.
+            </p>
+            <img class="bodySmallImage" src="{% static 'images/longLineEquivalentPie.jpg' %}">
+{% endblock content %}
